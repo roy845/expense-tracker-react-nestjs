@@ -280,5 +280,3 @@ npm start
 ## Manage User Permissions
 
 ![alt text](./backend/assets/image31.png)
-
-## Video demo
