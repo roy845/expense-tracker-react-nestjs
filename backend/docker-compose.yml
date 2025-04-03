@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  expense-tracker-nestjs:
+    build: .
+    ports:
+      - '5001:5001'
+    env_file:
+      - .env
+    # depends_on:
+    #   - mongodb
+    develop:
+      watch:
+        - path: .
+          target: /usr/src/app
+          action: sync
+#   mongodb:
+#     image: mongo:latest
+#     container_name: mongodb
+#     restart: always
+#     ports:
+#       - '27017:27017'
+#     env_file:
+#       - .env
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+#     volumes:
+#       - mongodb_data:/data/db
+
+# volumes:
+#   mongodb_data:

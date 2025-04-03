@@ -1,0 +1,402 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ResetPassword {
+  token: String!
+  expiresAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Bio {
+  welcomeMessage: String!
+  avatar: String!
+}
+
+type User {
+  _id: ID!
+  username: String!
+  email: String!
+  roles: [UserRoles!]!
+  resetPassword: ResetPassword
+  refreshToken: String
+  bio: Bio!
+  currencySymbol: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Available user roles"""
+enum UserRoles {
+  ADMIN
+  USER
+  GUEST
+}
+
+type UserReponseDto {
+  accessToken: String!
+  refreshToken: String!
+  message: String!
+}
+
+type RefreshTokenResponseDto {
+  message: String!
+  accessToken: String!
+}
+
+type Transaction {
+  _id: ID!
+  amount: Float!
+  type: TransactionType!
+  description: String
+  category: Category!
+  date: DateTime!
+  paymentMethod: PaymentMethod!
+  recurringTransaction: Boolean!
+  tags: [String!]
+  userId: ID!
+}
+
+enum TransactionType {
+  Expense
+  Income
+}
+
+enum Category {
+  Work
+  Freelance
+  Salary
+  Investments
+  OFFICE_SUPPLIES
+  WORK_TRAVEL
+  BUSINESS_SOFTWARE
+  PROFESSIONAL_SERVICES
+  MARKETING_ADVERTISING
+  Groceries
+  Restaurants
+  FOOD
+  FAST_FOOD
+  COFFEE_SHOPS
+  ALCOHOL_BARS
+  Transportation
+  PUBLIC_TRANSPORT
+  RIDE_SHARING
+  CAR_PAYMENT
+  CAR_INSURANCE
+  FUEL_GAS
+  VEHICLE_MAINTENANCE
+  Housing
+  RENT_MORTGAGE
+  PROPERTY_TAX
+  HOME_MAINTENANCE
+  Utilities
+  GAS_ELECTRICITY
+  WATER_SEWAGE
+  INTERNET_CABLE
+  PHONE_BILL
+  Education
+  ONLINE_COURSES
+  BOOKS_LEARNING
+  WORKSHOPS_TRAINING
+  Subscriptions
+  Healthcare
+  MEDICAL_BILLS
+  HEALTH_INSURANCE
+  DENTAL_CARE
+  VISION_CARE
+  FITNESS_GYM
+  MENTAL_HEALTH_THERAPY
+  Entertainment
+  MOVIES_STREAMING
+  CONCERTS_EVENTS
+  VIDEO_GAMES
+  HOBBIES_CRAFTS
+  OUTDOOR_ACTIVITIES
+  Personal
+  CLOTHING_FASHION
+  BEAUTY_COSMETICS
+  ELECTRONICS_GADGETS
+  JEWELRY_ACCESSORIES
+  GIFTS_DONATIONS
+  LIFE_INSURANCE
+  CAR_INSURANCE_FINANCIAL
+  HOME_INSURANCE
+  RETIREMENT_SAVINGS
+  INVESTMENTS_STOCKS
+  Pets
+  PET_FOOD_SUPPLIES
+  VETERINARY_CARE
+  PET_GROOMING_TRAINING
+  Travel
+  Flights
+  HOTELS_ACCOMMODATION
+  CAR_RENTAL
+  TRAVEL_INSURANCE
+  TOURIST_ACTIVITIES
+  CHARITY_DONATIONS
+  BANK_FEES_CHARGES
+  LOTTERY_GAMBLING
+  TAXES_GOVERNMENT_FEES
+  EMERGENCY_FUND
+  Other
+}
+
+enum PaymentMethod {
+  CASH
+  CREDIT_CARD
+  DEBIT_CARD
+  BANK_TRANSFER
+  MOBILE_PAYMENT
+  OTHER
+}
+
+type Budget {
+  _id: ID!
+  userId: ID!
+  name: String!
+  category: String!
+  monthlyLimit: Float!
+  startDate: DateTime!
+  endDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserResponse {
+  users: [User!]!
+  totalPages: Int!
+}
+
+type DeleteAllUsersResponse {
+  deletedUsers: Int!
+  deletedTransactions: Int!
+  deletedBudgets: Int!
+}
+
+type Role {
+  _id: ID!
+  name: UserRoles!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RolesResponse {
+  roles: [Role!]!
+  totalPages: Int!
+}
+
+type TransactionListResponse {
+  transactions: [Transaction!]!
+  totalPages: Int!
+}
+
+type BudgetResponse {
+  id: String!
+  userId: String!
+  name: String!
+  category: String!
+  monthlyLimit: Float!
+  spent: Float!
+  remaining: Float!
+  usedPercentage: Float!
+  startDate: String
+  endDate: String
+}
+
+type TotalBudgetResponse {
+  totalBudget: Float!
+  totalSpent: Float!
+  budgetCount: Int!
+}
+
+type PaginatedBudgetResponse {
+  budgets: [BudgetResponse!]!
+  totalPages: Int!
+}
+
+type DashboardMetrics {
+  income: Float!
+  expenses: Float!
+  balance: Float!
+  monthlyChange: Float!
+}
+
+type ExpenseCategory {
+  name: String!
+  value: Float!
+  color: String!
+}
+
+type ExpenseByCategoryResponse {
+  categories: [ExpenseCategory!]!
+}
+
+type ExpenseTrend {
+  date: String!
+  expense: Float!
+}
+
+type ExpenseTrendsResponse {
+  expenses: [ExpenseTrend!]!
+}
+
+type RecentTransactionsResponse {
+  transactions: [Transaction!]!
+}
+
+type IncomeSource {
+  name: String!
+  value: Float!
+  color: String!
+}
+
+type IncomeVsExpenses {
+  date: String!
+  income: Float!
+  expenses: Float!
+}
+
+type Query {
+  refreshToken: RefreshTokenResponseDto!
+  logout: Boolean!
+  healthCheck: String!
+  findAllUsers(search: String, skip: Int, take: Int, sortBy: String, order: SortOrder = ASC, startDate: String, endDate: String): UserResponse!
+  user(id: String!): User!
+  getCurrencySymbol: String!
+  getPermissionsByUser: [String!]!
+  getUserPermissions(id: String!): [String!]!
+  roles(search: String, skip: Int, take: Int, sortBy: String, order: SortOrder = ASC): RolesResponse!
+  role(name: UserRoles!): Role!
+  transactions(search: String, skip: Int, take: Int, sortBy: String, order: SortOrder = ASC): [Transaction!]!
+  transaction(id: String!): Transaction!
+  transactionsByUser(search: String, skip: Int, take: Int, sortBy: String, order: SortOrder = ASC, type: TransactionType, category: Category, startDate: DateTime, endDate: DateTime, minAmount: Float, maxAmount: Float, paymentMethod: PaymentMethod): TransactionListResponse!
+  findAllBudgets(search: String, skip: Int, take: Int, sortBy: String, order: SortOrder = ASC): [Budget!]!
+  findBudget(id: String!): Budget!
+  findBudgetsByUser: [Budget!]!
+  getBudgetWithSpentAmountForDashboard(month: String!, limit: Float! = 5): [BudgetResponse!]!
+  findBudgetsWithSpent(skip: Int, take: Int, search: String, sortBy: String, order: SortOrder = ASC, startDate: String, endDate: String): PaginatedBudgetResponse!
+  getTotalBudget: TotalBudgetResponse!
+  getTotalExpensesByCategory(category: String!, startDate: String!, endDate: String!): Float!
+  getBudgetWithSpentAmount(category: String!, date: String!): BudgetResponse
+  getDashboardMetrics: DashboardMetrics!
+  getExpenseByCategory(month: String!): ExpenseByCategoryResponse!
+  getExpenseTrends(days: Int!): ExpenseTrendsResponse!
+  getRecentTransactions(limit: Int!): RecentTransactionsResponse!
+  getIncomeSources(month: String!): [IncomeSource!]!
+  getIncomeVsExpenses(month: String!): [IncomeVsExpenses!]!
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+type Mutation {
+  register(registerInput: RegisterInput!): User!
+  login(loginInput: LoginInput!): UserReponseDto!
+  forgotPassword(forgotPasswordInput: ForgotPasswordInput!): String!
+  resetPassword(resetPasswordInput: ResetPasswordInput!): String!
+  updateUser(id: String!, updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): User!
+  removeAllUsers: DeleteAllUsersResponse!
+  updateCurrencySymbol(currencySymbol: String!): User!
+  updateUserPermissions(id: String!, permissions: [String!]!): [String!]!
+  createRole(createRoleInput: CreateRoleInput!): Role!
+  updateRole(name: UserRoles!, updateRoleInput: UpdateRoleInput!): Role!
+  removeRole(name: UserRoles!): Role!
+  assignRolesToUser(userId: String!, roles: [UserRoles!]!): User!
+  removeRolesFromUser(userId: String!, roles: [UserRoles!]!): User!
+  createTransaction(createTransactionInput: CreateTransactionInput!): Transaction!
+  updateTransaction(id: String!, updateTransactionInput: UpdateTransactionInput!): Transaction!
+  removeTransaction(id: String!): Transaction!
+  removeTransactions: Boolean!
+  removeAllTransactionsByUser: Boolean!
+  createBudget(input: CreateBudgetInput!): Budget!
+  updateBudget(input: UpdateBudgetInput!, id: String!): Budget!
+  removeBudget(id: String!): Budget!
+  removeAllBudgets: Boolean!
+  deleteAllBudgetsByUser: Boolean!
+}
+
+input RegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input ForgotPasswordInput {
+  email: String!
+}
+
+input ResetPasswordInput {
+  token: String!
+  newPassword: String!
+}
+
+input UpdateUserInput {
+  username: String
+  email: String
+  password: String
+  bio: BioInput
+}
+
+input BioInput {
+  welcomeMessage: String
+  avatar: String
+}
+
+input CreateRoleInput {
+  name: UserRoles!
+}
+
+input UpdateRoleInput {
+  name: UserRoles
+  id: Int!
+}
+
+input CreateTransactionInput {
+  amount: Float!
+  type: TransactionType!
+  description: String
+  category: Category!
+  date: String!
+  paymentMethod: PaymentMethod!
+  recurringTransaction: Boolean! = false
+  tags: [String!]
+}
+
+input UpdateTransactionInput {
+  amount: Float
+  type: TransactionType
+  description: String
+  category: Category
+  date: String
+  paymentMethod: PaymentMethod
+  recurringTransaction: Boolean
+  tags: [String!]
+}
+
+input CreateBudgetInput {
+  name: String!
+  category: String!
+  monthlyLimit: Float!
+  startDate: DateTime!
+  endDate: DateTime!
+}
+
+input UpdateBudgetInput {
+  name: String
+  category: String
+  monthlyLimit: Float
+  startDate: DateTime
+  endDate: DateTime
+}

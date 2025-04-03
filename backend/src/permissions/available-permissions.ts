@@ -1,0 +1,15 @@
+export const AVAILABLE_PERMISSIONS: string[] = [
+  'Home',
+  'Transactions',
+  'Add Transaction',
+  'Remove Transaction',
+  'Edit Transaction',
+  'Budgets',
+  'Add Budget',
+  'Remove Budget',
+  'Edit Budget',
+  'Scan From receipt',
+  'Currency Converter',
+  'Profile',
+  'Settings',
+];

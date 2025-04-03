@@ -1,0 +1,144 @@
+{
+  "users": [
+    {
+      "userId": "67e819730544ac55529724d2",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-03-29T16:01:56.043Z",
+      "updatedAt": "2025-03-29T18:12:08.070Z"
+    },
+    {
+      "userId": "67d45e0242b066730d2ace9a",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-03-29T17:55:35.075Z",
+      "updatedAt": "2025-03-29T17:58:50.839Z"
+    },
+    {
+      "userId": "67d433583f23d0fa3fab7fc3",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-03-29T17:58:56.828Z",
+      "updatedAt": "2025-04-01T13:53:08.753Z"
+    },
+    {
+      "userId": "67d433280ba82a97405219ae",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-03-29T17:59:02.156Z",
+      "updatedAt": "2025-04-01T13:58:04.060Z"
+    },
+    {
+      "userId": "67e656efb357c727c8b7d0c9",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-03-29T17:59:10.434Z",
+      "updatedAt": "2025-03-29T18:04:59.903Z"
+    },
+    {
+      "userId": "67ec0b2d35db53a60bcbae7c",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-04-01T15:50:05.191Z",
+      "updatedAt": "2025-04-01T15:50:05.191Z"
+    },
+    {
+      "userId": "67ed8125139b507f294e1f13",
+      "permissions": [
+        "Home",
+        "Transactions",
+        "Add Transaction",
+        "Remove Transaction",
+        "Edit Transaction",
+        "Budgets",
+        "Add Budget",
+        "Remove Budget",
+        "Edit Budget",
+        "Scan From receipt",
+        "Currency Converter",
+        "Profile",
+        "Settings"
+      ],
+      "createdAt": "2025-04-02T18:25:41.568Z",
+      "updatedAt": "2025-04-02T18:25:41.568Z"
+    }
+  ]
+}
